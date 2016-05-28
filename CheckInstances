@@ -1,4 +1,4 @@
-#This script will list out health of all the instances configured in all available regions.
+#This script will list out health of all the instances configured in all available regions
 import boto3
 
 ec2_res=boto3.resource('ec2')
@@ -17,5 +17,3 @@ def lambda_handler(event, context):
             print status
             if region<>"eu-east-1":
                 print "instancia no programada"
-
-
