@@ -3,6 +3,11 @@ import boto3
 
 ec2_res=boto3.resource('ec2')
 ec2_client=boto3.client('ec2')
+sns = boto3.client('sns')
+
+SNS_ARN=''
+
+
 
 def lambda_handler(event, context):
 
@@ -16,5 +21,9 @@ def lambda_handler(event, context):
         for status in client.describe_instance_status(IncludeAllInstances=True)['InstanceStatuses']:
             print status
             if region<>"eu-east-1":
-                print "instancia no programada"
-
+                print "Instance %s no monitored"
+                sns.publish(
+                    TopicArn=SNS_ARN,
+                    Subject='AMAZON EC2 Instance no monitored',
+                    Message='Instance %s no monitored'
+                    )
