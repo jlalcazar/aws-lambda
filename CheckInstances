@@ -17,3 +17,4 @@ def lambda_handler(event, context):
             print status
             if region<>"eu-east-1":
                 print "instancia no programada"
+
