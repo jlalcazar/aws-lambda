@@ -7,7 +7,23 @@ sns = boto3.client('sns')
 
 SNS_ARN=''
 
+JSON=[
 
+    'TargetArn' => $EndpointArn,
+    'MessageStructure' => 'json',
+    'Message' => json_encode(array(
+        'default' => $title,
+        'APNS' => json_encode(array(
+            'aps' => array(
+                'alert' => $title,
+            ),
+            // Custom payload parameters can go here
+            'id' => '123',
+            's' => 'section'
+        ))
+
+    ))
+    ]
 
 def lambda_handler(event, context):
 
