@@ -1,3 +1,3 @@
 # aws-lambda
 
-CheckInstances checks ec2 instances en all regions, lists and sends sns when exists in not excluded regions
+CheckInstances checks ec2 instances in all regions and notify when exists any in not excluded regions
